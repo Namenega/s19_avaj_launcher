@@ -1,10 +1,10 @@
-//package ro.academyplus.avaj.simulator;
+package ro.academyplus.avaj.simulator;
 
 public class WeatherProvider {
 
-    private String[] weather;
+	private String[] weather;
 
-    private WeatherProvider() {}
+	private WeatherProvider() {}
 
-    public String getCurrentWeather(Coordinates p_coordinates) {}
+	public String getCurrentWeather(Coordinates p_coordinates) {}
 }

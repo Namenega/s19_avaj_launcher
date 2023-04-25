@@ -1,4 +1,4 @@
-//package ro.academyplus.avaj.simulator;
+package ro.academyplus.avaj.simulator;
 
 import java.util.List;
 

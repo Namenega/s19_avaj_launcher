@@ -1,10 +1,12 @@
-//package ro.academyplus.avaj.simulator;
+package ro.academyplus.avaj.simulator;
 
 public interface Flyable {
 
-    protected WeatherTower  weatherTower;
+	protected WeatherTower  weatherTower;
 
-    public abstract void    updateConditions();
+	public abstract void	updateConditions();
 
-    public void             registerTower(WeatherTower[] p_tower);
+	public void				registerTower(WeatherTower[] p_tower) {
+		System.out.println("Tower says :");
+	}
 }
