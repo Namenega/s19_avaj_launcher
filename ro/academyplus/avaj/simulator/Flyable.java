@@ -6,7 +6,7 @@ public interface Flyable {
 
 	public abstract void	updateConditions();
 
-	public void				registerTower(WeatherTower[] p_tower) {
-		System.out.println("Tower says :");
-	}
+	public void				registerTower(WeatherTower[] p_tower);
+
+
 }

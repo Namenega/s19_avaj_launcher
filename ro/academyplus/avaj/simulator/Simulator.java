@@ -1,34 +1,35 @@
-
 package ro.academyplus.avaj.simulator;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.List;
 import java.util.Scanner;
 
 public class Simulator {
 
-	private static int			ERROR_ARG = 1;
-	private static int			ERROR_PARSE = 2;
-	private static int			count = 0;
-	private static int			numberOfTurn;
-	private static Flyable[]	myFactory;
+	private static int				ERROR_ARG = 1;
+	private static int				ERROR_PARSE = 2;
+	private static int				count = 0;
+	private static int				numberOfTurn;
+	private static AircraftFactory	myFactory;
 
 	private static void parseDataLine(String[] data) {
-		int	longitude;
-		int	latitude;
-		int	height;
 		try {
-			longitude = Integer.parseInt(data[2]);
-			latitude = Integer.parseInt(data[3]);
-			height = Integer.parseInt(data[4]);
+			int		longitude = Integer.parseInt(data[2]);
+			int		latitude = Integer.parseInt(data[3]);
+			int		height = Integer.parseInt(data[4]);
+			String	type = data[0];
+			String	name = data[1];
 
-			if (data[0].equals("Baloon") || data[0].equals("Helicopter") || data[0].equals("JetPlane")) {
+			if (type.equals("Baloon") || type.equals("Helicopter") || type.equals("JetPlane")) {
 				Coordinates coord = new Coordinates(longitude, latitude, height);
+				myFactory.newAircraft(type, name, coord);
+			} else {
+				throw new Exception("1st parameter is broken.");
 			}
 
-
-		} catch (NumberFormatException e) {
-			throw new NumberFormatException(e.getMessage());
+		} catch (Exception e) {
+			System.out.println(e);
 		}
 
 	}

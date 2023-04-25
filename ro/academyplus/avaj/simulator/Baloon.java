@@ -10,4 +10,10 @@ public class Baloon extends Aircraft {
     public void updateConditions() {
 
     }
+
+	@Override
+	public void registerTower(WeatherTower[] p_tower) {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'registerTower'");
+	}
 }
