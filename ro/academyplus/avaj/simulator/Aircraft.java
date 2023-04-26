@@ -1,5 +1,9 @@
 package ro.academyplus.avaj.simulator;
 
+/**
+ * The abstract class Aircraft extends Flyable and contains properties and methods
+ * related to aircrafts.
+ */
 public abstract class Aircraft extends Flyable {
 
     protected long id;

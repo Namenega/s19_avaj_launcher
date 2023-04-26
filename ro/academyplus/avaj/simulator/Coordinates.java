@@ -1,5 +1,9 @@
 package ro.academyplus.avaj.simulator;
 
+/**
+ * The Coordinates class represents a set of coordinates with longitude, latitude,
+ * and height attributes, and includes methods to get and set these attributes.
+ */
 public class Coordinates {
 
     private int longitude;

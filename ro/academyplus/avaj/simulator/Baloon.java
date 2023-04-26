@@ -1,5 +1,9 @@
 package ro.academyplus.avaj.simulator;
 
+/**
+ * The Baloon class extends the Aircraft class and updates its conditions based on
+ * the current weather.
+ */
 public class Baloon extends Aircraft {
 
     public Baloon(long p_id, String p_name, Coordinates p_coordinate) {
@@ -7,6 +11,10 @@ public class Baloon extends Aircraft {
         super(p_id, p_name, p_coordinate);
     }
 
+    /**
+     * The function updates the conditions of a balloon based on the current
+     * weather and adjusts its coordinates accordingly.
+     */
     @Override
     public void updateConditions() {
         String weather = WeatherProvider.getWeatherProvider().getCurrentWeather(super.coordinates);

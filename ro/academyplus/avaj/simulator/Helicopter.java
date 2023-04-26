@@ -1,5 +1,9 @@
 package ro.academyplus.avaj.simulator;
 
+/**
+ * The Helicopter class extends the Aircraft class and updates its coordinates
+ * based on the current weather conditions.
+ */
 public class Helicopter extends Aircraft {
 
     public Helicopter(long p_id, String p_name, Coordinates p_coordinate) {
@@ -7,6 +11,10 @@ public class Helicopter extends Aircraft {
         super(p_id, p_name, p_coordinate);
     }
 
+    /**
+     * The function updates the helicopter's coordinates and prints a message based
+     * on the current weather conditions.
+     */
     @Override
     public void updateConditions() {
 

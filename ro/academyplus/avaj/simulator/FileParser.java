@@ -8,6 +8,16 @@ import java.util.List;
 
 public class FileParser {
 
+    /**
+     * The function reads a file and parses the first line as an integer, throwing
+     * exceptions for invalid input.
+     * 
+     * @param filename The parameter "filename" is a String that represents the
+     * name or path of the file that contains the input data for the method.
+     * @return The method is returning an integer value, which is the number of
+     * turns parsed from the first line of the file specified by the filename
+     * parameter.
+     */
     public static int parseTurns(String filename) throws IOException, IllegalArgumentException {
         List<String> lines = Files.readAllLines(Paths.get(filename));
 
@@ -30,6 +40,21 @@ public class FileParser {
         }
     }
 
+    /**
+     * The function parses aircraft type from a string array and returns a Flyable
+     * object based on the type.
+     * 
+     * @param tokens an array of strings containing the information needed to
+     * create an aircraft object (type, name, longitude, latitude, height)
+     * @param i The parameter "i" is an integer that represents the index of the
+     * current line being processed in a file. It is used to provide context in
+     * case an exception is thrown, to indicate which line caused the error.
+     * @return If the first token in the input array is "Baloon", "Helicopter", or
+     * "JetPlane", a new aircraft object is created using the AircraftFactory class
+     * and the corresponding type of aircraft is returned. If there is a
+     * NumberFormatException, an exception is thrown. If the first token is not one
+     * of the specified aircraft types, null is returned.
+     */
     public static Flyable parseAircraftType(String[] tokens, int i) {
 
         try {
@@ -49,6 +74,15 @@ public class FileParser {
         return (null);
     }
 
+    /**
+     * This Java function reads aircraft data from a file, validates the data, and
+     * returns a list of flyable objects.
+     * 
+     * @param filename The filename parameter is a String that represents the name
+     * or path of the file that contains the aircraft data to be parsed.
+     * @return The method is returning a List of objects that implement the Flyable
+     * interface.
+     */
     public static List<Flyable> parseAircraftData(String filename) throws IOException, IllegalArgumentException {
 
         List<String> lines = Files.readAllLines(Paths.get(filename));
