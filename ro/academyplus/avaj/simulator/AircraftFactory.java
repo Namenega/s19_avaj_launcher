@@ -34,7 +34,7 @@ public class AircraftFactory {
         } else if (p_type.equals("JetPlane")) {
             return new JetPlane(id, p_name, p_coordinates);
         } else {
-            throw new IllegalArgumentException("Invalid aircraft type: " + p_type);
+            throw new MyIllegalArgumentException("Invalid aircraft type: " + p_type);
         }
     }
 }
