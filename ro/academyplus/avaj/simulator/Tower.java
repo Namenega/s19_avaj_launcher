@@ -32,7 +32,18 @@ public class Tower {
 		System.out.println("Tower says: " + p_flyable.getType() + "#" + p_flyable.getId() + "(" + p_flyable.getName() + ") unregistered from weather tower.");
 	}
 
-	protected void conditionsChanged() {}
+	protected void conditionsChanged() {
+		for (int j = 0; j < observers.size(); j++) {
+				
+			observers.get(j).updateConditions();
+
+			if (observers.get(j).getHeight() <= 0) {
+				unregister(observers.get(j));
+				// observers.remove(observers.get(j));
+				// j--;
+			}
+		}
+	}
 
 	public static Tower getTower() {
 		Tower t = new Tower();

@@ -13,3 +13,4 @@ echo "Command : ${CYN} rm .DS_Store */.DS_Store */*/.DS_Store */*/*/.DS_Store */
 rm ro/academyplus/avaj/simulator/*.class
 rm -rf files/src
 rm .DS_Store */.DS_Store */*/.DS_Store */*/*/.DS_Store */*/*/*/.DS_Store
+rm simulation.txt
