@@ -6,29 +6,43 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The FileParser class reads and parses aircraft data from a file, validates the
+ * data, and returns a list of flyable objects.
+ */
 public class FileParser {
 
 	/**
-	 * The function parses aircraft type from a string array and returns a Flyable
-	 * object based on the type.
+	 * The function parses aircraft type from a string array and creates an aircraft
+	 * object with given coordinates, throwing an exception if the coordinates are
+	 * negative.
 	 * 
-	 * @param tokens an array of strings containing the information needed to
-	 * create an aircraft object (type, name, longitude, latitude, height)
-	 * @param i The parameter "i" is an integer that represents the index of the
-	 * current line being processed in a file. It is used to provide context in
-	 * case an exception is thrown, to indicate which line caused the error.
-	 * @return If the first token in the input array is "Baloon", "Helicopter", or
-	 * "JetPlane", a new aircraft object is created using the AircraftFactory class
-	 * and the corresponding type of aircraft is returned. If there is a
-	 * NumberFormatException, an exception is thrown. If the first token is not one
-	 * of the specified aircraft types, null is returned.
-	 * @throws MyException
+	 * @param tokens an array of strings containing the information needed to create
+	 * an aircraft object, such as its type, name, longitude, latitude, and height.
+	 * @param i The parameter "i" is not used in the given code snippet and therefore
+	 * has no significance in this context. It is just a placeholder variable in the
+	 * method signature.
+	 * @return The method is returning an object of type Flyable, which is created
+	 * using the AircraftFactory based on the input tokens. If the input tokens do not
+	 * match any of the supported aircraft types, the method returns null.
 	 */
 	public static Flyable parseAircraftType(String[] tokens, int i) throws MyException {
 
 		int longitude = Integer.parseInt(tokens[2]);
+		if (longitude < 0) {
+			throw new MyException("Aircraft longitude is smaller than 0.");
+		}
+
 		int latitude = Integer.parseInt(tokens[3]);
+		if (latitude < 0) {
+			throw new MyException("Aircraft latitude is smaller than 0.");
+		}
+
 		int height = Integer.parseInt(tokens[4]);
+		if (height < 0) {
+			throw new MyException("Aircraft height is smaller than 0.");
+		}
+
 		AircraftFactory myFactory = new AircraftFactory();
 
 		if (tokens[0].equals("Baloon") || tokens[0].equals("Helicopter") || tokens[0].equals("JetPlane")) {
@@ -39,14 +53,13 @@ public class FileParser {
 	}
 
 	/**
-	 * This Java function reads aircraft data from a file, validates the data, and
-	 * returns a list of flyable objects.
+	 * The function reads data from a file, parses it, and creates a list of flyable
+	 * objects.
 	 * 
-	 * @param filename The filename parameter is a String that represents the name
-	 * or path of the file that contains the aircraft data to be parsed.
+	 * @param filename The filename parameter is a String that represents the name or
+	 * path of the file that contains the aircraft data to be parsed.
 	 * @return The method is returning a List of objects that implement the Flyable
 	 * interface.
-	 * @throws IOException
 	 */
 	public static List<Flyable> parseAircraftData(String filename) throws MyException, IOException {
 
@@ -65,17 +78,13 @@ public class FileParser {
 		return flyableArr;
 	}
 
-		/**
-	 * The function reads a file and parses the first line as an integer, throwing
-	 * exceptions for invalid input.
+	/**
+	 * The function reads a file and parses the first line to return an integer
+	 * representing the number of turns.
 	 * 
-	 * @param filename The parameter "filename" is a String that represents the
-	 * name or path of the file that contains the input data for the method.
-	 * @return The method is returning an integer value, which is the number of
-	 * turns parsed from the first line of the file specified by the filename
-	 * parameter.
-	 * @throws IOException
-	 * @throws Exception
+	 * @param filename The name of the file that contains the input data.
+	 * @return The method is returning an integer value, which is the first line of
+	 * the file after parsing it.
 	 */
 	public static int parseTurns(String filename) throws MyException, IOException {
 		List<String> lines = Files.readAllLines(Paths.get(filename));
@@ -83,7 +92,6 @@ public class FileParser {
 		if (lines.isEmpty()) {
 			throw new MyException(filename + " is empty.");
 		}
-
 		for (int i = 0; i < lines.size(); i++) {
 			String[] tokens = lines.get(i).split(" ");
 			
@@ -95,7 +103,6 @@ public class FileParser {
 				throw new MyException("Error: Line " + (i + 1) + ": Wrong token.");
 			}
 		}
-
 		return Integer.parseInt(lines.get(0));
 	}
 }

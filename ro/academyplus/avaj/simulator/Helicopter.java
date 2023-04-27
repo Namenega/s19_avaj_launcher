@@ -6,8 +6,13 @@ package ro.academyplus.avaj.simulator;
  */
 public class Helicopter extends Aircraft {
 
+	// This is a constructor for the Helicopter class that takes in three parameters:
+	// a long representing the helicopter's ID, a String representing the helicopter's
+	// name, and a Coordinates object representing the helicopter's starting
+	// coordinates. The constructor calls the constructor of the superclass (Aircraft)
+	// with these parameters using the `super` keyword, which initializes the ID,
+	// name, and coordinates of the helicopter.
 	public Helicopter(long p_id, String p_name, Coordinates p_coordinate) {
-
 		super(p_id, p_name, p_coordinate);
 	}
 
@@ -18,8 +23,8 @@ public class Helicopter extends Aircraft {
 	@Override
 	public void updateConditions() {
 
-		String weather = WeatherProvider.getWeatherProvider().getCurrentWeather(super.coordinates);
-//		System.out.println(weather);
+		// String weather = weatherTower.getWeatherProvider().getCurrentWeather(super.coordinates);
+		String weather = weatherTower.getWeather(coordinates);
 
 		switch (weather) {
 			case "SUN":
@@ -42,6 +47,10 @@ public class Helicopter extends Aircraft {
 		}
 	}
 
+	// These are method overrides for the Aircraft class. The `@Override` annotation
+	// indicates that these methods are overriding methods from the superclass. The
+	// `final` keyword indicates that these methods cannot be overridden by any
+	// subclasses of the Helicopter class.
 	@Override
 	public final long	getId() {
 		return this.id;

@@ -37,6 +37,11 @@ public class WeatherProvider {
 		}
 	}
 
+	/**
+	 * The function returns a new instance of the WeatherProvider class.
+	 * 
+	 * @return An instance of the `WeatherProvider` class is being returned.
+	 */
 	public static WeatherProvider	getWeatherProvider() {
 		WeatherProvider weather = new WeatherProvider();
 		return weather;

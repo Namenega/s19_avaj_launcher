@@ -16,7 +16,4 @@ public abstract class Aircraft extends Flyable {
 		this.name = p_name;
 		this.coordinates = p_coordinate;
 	}
-
-	@Override
-	public abstract void updateConditions();
 }

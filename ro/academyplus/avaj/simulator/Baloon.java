@@ -7,7 +7,6 @@ package ro.academyplus.avaj.simulator;
 public class Baloon extends Aircraft {
 
 	public Baloon(long p_id, String p_name, Coordinates p_coordinate) {
-
 		super(p_id, p_name, p_coordinate);
 	}
 
@@ -17,8 +16,7 @@ public class Baloon extends Aircraft {
 	 */
 	@Override
 	public void updateConditions() {
-		String weather = WeatherProvider.getWeatherProvider().getCurrentWeather(super.coordinates);
-//		System.out.println(weather);
+		String weather = weatherTower.getWeather(coordinates);
 
 		switch (weather) {
 			case "SUN":
@@ -41,6 +39,8 @@ public class Baloon extends Aircraft {
 		}
 	}
 
+	// This is a set of methods in the Baloon class that override methods from the
+	// Aircraft class and provide specific implementations for the Baloon class.
 	@Override
 	public final long	getId() {
 		return this.id;
@@ -56,7 +56,7 @@ public class Baloon extends Aircraft {
 		return "Baloon";
 	}
 
-	public final int		getHeight() {
+	public final int	getHeight() {
 		return this.coordinates.getHeight();
 	}
 }

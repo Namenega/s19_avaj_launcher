@@ -9,23 +9,25 @@ import java.util.List;
 public class Simulator {
 
 	private static final int	ERROR_ARG = 1;
-	private static final int	ERROR_FILE = 2;
 
 	private static int				turns;
 	private static List<Flyable>	fleet = new ArrayList<Flyable>();
 	private static WeatherTower		wt = new WeatherTower();
 
+	/**
+	 * The function registers aircrafts to a weather tower and changes the weather for
+	 * a certain number of turns.
+	 */
 	public static void run() {
 
 		for (Flyable aircraft : fleet) {
-			
-			// Tower.getTower().register(aircraft);
 			wt.register(aircraft);
+			aircraft.registerTower(wt);
 		}
+
 		System.out.print("\n");
 
 		for (int i = turns; i > 0; i--) {
-
 			wt.changeWeather();
 		}
 	}
@@ -78,12 +80,19 @@ public class Simulator {
 			System.exit(ERROR_ARG);
 		}
 		
+		// This code block is redirecting the standard output stream to a file named
+		// "simulation.txt" using a `PrintStream` object. It then calls the `parsing`
+		// function to parse the scenario file and the `run` function to simulate the
+		// aircraft movements for a certain number of turns. If an exception of type
+		// `MyException` or `IOException` is thrown during the execution of these
+		// functions, it catches the exception and prints the error message to the
+		// console. Finally, it closes the output stream.
 		try {
 			PrintStream out = new PrintStream(new FileOutputStream("simulation.txt"));
 			System.setOut(out);
 			parsing(args[0]);
 			run();
-			// out.close();
+			out.close();
 		} catch (MyException | IOException e) {
 			System.out.println(e.getMessage());
 		}

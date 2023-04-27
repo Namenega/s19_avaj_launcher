@@ -7,7 +7,6 @@ package ro.academyplus.avaj.simulator;
 public class JetPlane extends Aircraft {
 
 	public JetPlane(long p_id, String p_name, Coordinates p_coordinate) {
-
 		super(p_id, p_name, p_coordinate);
 	}
 
@@ -17,8 +16,7 @@ public class JetPlane extends Aircraft {
 	 */
 	@Override
 	public void updateConditions() {
-		String weather = WeatherProvider.getWeatherProvider().getCurrentWeather(super.coordinates);
-//		System.out.println(weather);
+		String weather = weatherTower.getWeather(coordinates);
 
 		switch (weather) {
 			case "SUN":
@@ -41,6 +39,11 @@ public class JetPlane extends Aircraft {
 		}
 	}
 
+	// These are method overrides for the Aircraft class. They are used to provide
+	// specific implementations for the getId(), getName(), getType(), and getHeight()
+	// methods for the JetPlane class. The @Override annotation indicates that these
+	// methods are overriding methods from the superclass. The final keyword indicates
+	// that these methods cannot be overridden by any subclasses of JetPlane.
 	@Override
 	public final long	getId() {
 		return this.id;
